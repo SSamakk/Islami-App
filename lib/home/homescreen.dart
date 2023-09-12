@@ -19,12 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        /// background
         Image.asset(
           'assets/images/default_bg.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
         ),
+
+        /// app bar and navigation bar
         Scaffold(
           bottomNavigationBar: Theme(
             data: Theme.of(context).copyWith(
@@ -41,25 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: ImageIcon(
                     AssetImage('assets/images/icon_quran.png'),
                   ),
-                  label: 'Quraan',
+                  label: 'قرآن',
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/images/icon_hadeth.png')),
-                  label: 'Hadeth',
+                  label: 'حديث',
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/images/icon_sebha.png')),
-                  label: 'Sebha',
+                  label: 'سبحة',
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/images/icon_radio.png')),
-                  label: 'Radio',
+                  label: 'راديو',
                 ),
               ],
             ),
           ),
           appBar: AppBar(
-            title: Text('Islami'),
+            title: Text('إسلامي'),
           ),
           body: tabs[selectedIndex],
         ),

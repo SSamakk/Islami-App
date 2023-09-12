@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/home/quraan/suraScreen.dart';
 
 class QuraanTab extends StatelessWidget {
   List<String> suraNames = [
@@ -249,7 +250,7 @@ class QuraanTab extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      'Sura Name',
+                      'عدد الآيات',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
@@ -263,7 +264,7 @@ class QuraanTab extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      'Ayat Number',
+                      'اسم السورة',
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
@@ -297,20 +298,30 @@ class QuraanTab extends StatelessWidget {
               children: [
                 for (int i = 0; i < suraNames.length; i++)
                   TableRow(children: [
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      child: Text(
-                        '${suraNames[i]}',
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleMedium,
-                      ),
-                    ),
+                    /// ayat number
                     Container(
                       padding: EdgeInsets.all(5),
                       child: Text(
                         '${ayatNumber[i]}',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleMedium,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    ),
+
+                    /// name (can be pressed)
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(SuraScreen.routeName,
+                            arguments:
+                                SuraDetailsArgs(name: suraNames[i], index: i));
+                      },
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        child: Text(
+                          '${suraNames[i]}',
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
                       ),
                     ),
                   ])

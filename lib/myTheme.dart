@@ -21,14 +21,14 @@ class MyTheme {
           color: blackColor,
           fontSize: 30,
         ),
-      ),
+        iconTheme: IconThemeData(color: blackColor)),
 
       /// bottom navigation bar theme
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
           selectedItemColor: blackColor,
           unselectedItemColor: whiteColor,
-          selectedLabelStyle:
-              TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+          selectedLabelStyle: TextStyle(
+              fontSize: 13, fontWeight: FontWeight.w700, color: Colors.black),
           selectedIconTheme: IconThemeData(size: 36),
           unselectedIconTheme: IconThemeData(size: 36)
           // backgroundColor: primaryLight,
@@ -37,6 +37,10 @@ class MyTheme {
       /// text themes
       textTheme: TextTheme(
         titleMedium: TextStyle(
-            fontSize: 20, fontWeight: FontWeight.w600, color: blackColor),
+            fontSize: 25, fontWeight: FontWeight.w600, color: blackColor),
+        titleSmall: TextStyle(
+            fontSize: 25, fontWeight: FontWeight.w400, color: blackColor),
+        bodyLarge: TextStyle(
+            fontSize: 20, fontWeight: FontWeight.w400, color: blackColor),
       ));
 }
