@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami/home/quraan/suraDetails.dart';
+import 'package:islami/myTheme.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/AppProvider.dart';
 
 class SuraScreen extends StatefulWidget {
   static const String routeName = 'suraScreen';
@@ -14,21 +18,25 @@ class _SuraScreenState extends State<SuraScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var args = ModalRoute.of(context)?.settings.arguments as SuraDetailsArgs;
+    var provider = Provider.of<AppConfigProvider>(context);
+
+    var args = ModalRoute.of(context)?.settings.arguments as SuraScreenArgs;
     if (verse.isEmpty) {
       loadFile(args.index);
     }
 
     return Stack(children: [
       Image.asset(
-        'assets/images/default_bg.png',
+        provider.isDark()
+            ? 'assets/images/dark_bg.png'
+            : 'assets/images/default_bg.png',
         width: double.infinity,
         height: double.infinity,
         fit: BoxFit.fill,
       ),
       Scaffold(
         appBar: AppBar(
-          title: Text('إسلامي'),
+          title: Text('Islami'),
         ),
         body: Container(
           margin: EdgeInsets.symmetric(
@@ -37,7 +45,9 @@ class _SuraScreenState extends State<SuraScreen> {
           ),
           padding: EdgeInsets.all(5),
           decoration: BoxDecoration(
-            color: Color.fromRGBO(248, 248, 248, 0.8),
+            color: provider.isDark()
+                ? Color.fromRGBO(20, 26, 46, 0.8)
+                : Color.fromRGBO(248, 248, 248, 0.8),
             borderRadius: BorderRadius.circular(25),
           ),
           child: Column(
@@ -47,7 +57,9 @@ class _SuraScreenState extends State<SuraScreen> {
                 style: Theme.of(context).textTheme.titleSmall,
               ),
               Divider(
-                color: Theme.of(context).primaryColor,
+                color: provider.isDark()
+                    ? MyTheme.yellowColor
+                    : Theme.of(context).primaryColor,
                 thickness: 1,
               ),
               verse.length == 0
@@ -55,7 +67,9 @@ class _SuraScreenState extends State<SuraScreen> {
                       height: MediaQuery.of(context).size.height * 0.4,
                       child: Center(
                         child: CircularProgressIndicator(
-                          color: Colors.black,
+                          color: provider.isDark()
+                              ? MyTheme.yellowColor
+                              : Theme.of(context).primaryColor,
                         ),
                       ))
                   : Expanded(
@@ -86,9 +100,9 @@ class _SuraScreenState extends State<SuraScreen> {
 }
 
 // data class
-class SuraDetailsArgs {
+class SuraScreenArgs {
   String name;
   int index;
 
-  SuraDetailsArgs({required this.name, required this.index});
+  SuraScreenArgs({required this.name, required this.index});
 }

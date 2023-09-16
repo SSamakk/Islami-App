@@ -1,24 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/home/hadeth/hadethScreen.dart';
+import 'package:islami/myTheme.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/AppProvider.dart';
 
 class HadethTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     List<String> hadeth = [];
+
+    // list of hadeth titles in table
     for (int i = 0; i < 50; i++) {
-      hadeth.add('حديث رقم ${i + 1}');
+      AppLocalizations.of(context)!.localeName == 'ar'
+          ? hadeth.add('حديث رقم ${i + 1}')
+          : hadeth.add('Hadeth #${i + 1}');
     }
 
     return Column(
       children: [
         Center(child: Image.asset('assets/images/hadeth_logo.png')),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.isDark()
+              ? MyTheme.yellowColor
+              : Theme.of(context).primaryColor,
           thickness: 3,
         ),
-        Text('الأحاديث', style: Theme.of(context).textTheme.titleMedium),
+        Text(AppLocalizations.of(context)!.hadethName,
+            style: Theme.of(context).textTheme.titleMedium),
         Divider(
-          color: Theme.of(context).primaryColor,
+          color: provider.isDark()
+              ? MyTheme.yellowColor
+              : Theme.of(context).primaryColor,
           thickness: 3,
         ),
         Expanded(
@@ -26,13 +42,18 @@ class HadethTab extends StatelessWidget {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                Navigator.of(context).pushNamed(HadethScreen.routeName,
-                    arguments: HadethDetailsArgs(index: index));
+                Navigator.of(context).pushNamed(
+                  HadethScreen.routeName,
+                  arguments: index,
+                );
               },
-              child: Text(
-                hadeth[index],
-                style: Theme.of(context).textTheme.titleSmall,
-                textAlign: TextAlign.center,
+              child: Container(
+                margin: EdgeInsets.all(5),
+                child: Text(
+                  hadeth[index],
+                  style: Theme.of(context).textTheme.titleSmall,
+                  textAlign: TextAlign.center,
+                ),
               ),
             );
           },

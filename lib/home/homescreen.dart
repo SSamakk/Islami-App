@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/home/hadeth/hadethTab.dart';
 import 'package:islami/home/quraan/quraanTab.dart';
 import 'package:islami/home/radio/radioTab.dart';
 import 'package:islami/home/sebha/sebhaTab.dart';
+import 'package:islami/home/settings/SettingsTab.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/AppProvider.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'HomeScreen';
@@ -13,15 +18,25 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
-  List<Widget> tabs = [QuraanTab(), HadethTab(), SebhaTab(), RadioTab()];
+  List<Widget> tabs = [
+    QuraanTab(),
+    HadethTab(),
+    SebhaTab(),
+    RadioTab(),
+    SettingsTab()
+  ];
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Stack(
       children: [
         /// background
         Image.asset(
-          'assets/images/default_bg.png',
+          provider.isDark()
+              ? 'assets/images/dark_bg.png'
+              : 'assets/images/default_bg.png',
           width: double.infinity,
           height: double.infinity,
           fit: BoxFit.fill,
@@ -44,25 +59,32 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: ImageIcon(
                     AssetImage('assets/images/icon_quran.png'),
                   ),
-                  label: 'قرآن',
+                  label: AppLocalizations.of(context)!.quraan,
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/images/icon_hadeth.png')),
-                  label: 'حديث',
+                  label: AppLocalizations.of(context)!.hadeth,
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/images/icon_sebha.png')),
-                  label: 'سبحة',
+                  label: AppLocalizations.of(context)!.sebha,
                 ),
                 BottomNavigationBarItem(
                   icon: ImageIcon(AssetImage('assets/images/icon_radio.png')),
-                  label: 'راديو',
+                  label: AppLocalizations.of(context)!.radio,
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.settings,
+                    size: MediaQuery.of(context).size.width * 0.08,
+                  ),
+                  label: AppLocalizations.of(context)!.settings,
                 ),
               ],
             ),
           ),
           appBar: AppBar(
-            title: Text('إسلامي'),
+            title: Text(AppLocalizations.of(context)!.appTitle),
           ),
           body: tabs[selectedIndex],
         ),

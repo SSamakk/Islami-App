@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/home/quraan/suraScreen.dart';
+import 'package:islami/myTheme.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/AppProvider.dart';
 
 class QuraanTab extends StatelessWidget {
   List<String> suraNames = [
@@ -238,6 +243,8 @@ class QuraanTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
     return Column(
       children: [
         Center(child: Image.asset('assets/images/qur2an_screen_logo.png')),
@@ -247,41 +254,55 @@ class QuraanTab extends StatelessWidget {
           children: [
             TableRow(
                 children: [
+                  // ayat number container
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      'عدد الآيات',
+                      AppLocalizations.of(context)!.ayatNumber,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     decoration: BoxDecoration(
-                      border: Border(
-                          right: BorderSide(
-                              color: Theme.of(context).primaryColor,
+                      border: Border.symmetric(
+                          vertical: BorderSide(
+                              color: provider.isDark()
+                                  ? MyTheme.yellowColor
+                                  : Theme.of(context).primaryColor,
                               width: 1.5)),
                     ),
                   ),
+
+                  // sura name container
                   Container(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      'اسم السورة',
+                      AppLocalizations.of(context)!.suraName,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                     decoration: BoxDecoration(
-                      border: Border(
-                          left: BorderSide(
-                              color: Theme.of(context).primaryColor,
+                      border: Border.symmetric(
+                          vertical: BorderSide(
+                              color: provider.isDark()
+                                  ? MyTheme.yellowColor
+                                  : Theme.of(context).primaryColor,
                               width: 1.5)),
                     ),
                   ),
                 ],
                 decoration: BoxDecoration(
                   border: Border(
-                      top: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 3),
-                      bottom: BorderSide(
-                          color: Theme.of(context).primaryColor, width: 3)),
+                    top: BorderSide(
+                        color: provider.isDark()
+                            ? MyTheme.yellowColor
+                            : Theme.of(context).primaryColor,
+                        width: 3),
+                    bottom: BorderSide(
+                        color: provider.isDark()
+                            ? MyTheme.yellowColor
+                            : Theme.of(context).primaryColor,
+                        width: 3),
+                  ),
                 )),
           ],
         ),
@@ -292,12 +313,31 @@ class QuraanTab extends StatelessWidget {
             scrollDirection: Axis.vertical,
             child: Table(
               border: TableBorder(
-                verticalInside:
-                    BorderSide(color: Theme.of(context).primaryColor, width: 3),
+                verticalInside: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 3),
+                right: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 1.5),
+                left: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 1.5),
+                bottom: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 1.5),
               ),
               children: [
                 for (int i = 0; i < suraNames.length; i++)
                   TableRow(children: [
+
                     /// ayat number
                     Container(
                       padding: EdgeInsets.all(5),
@@ -313,7 +353,7 @@ class QuraanTab extends StatelessWidget {
                       onTap: () {
                         Navigator.of(context).pushNamed(SuraScreen.routeName,
                             arguments:
-                                SuraDetailsArgs(name: suraNames[i], index: i));
+                                SuraScreenArgs(name: suraNames[i], index: i));
                       },
                       child: Container(
                         padding: EdgeInsets.all(5),
