@@ -5,13 +5,21 @@ import 'package:islami/home/quraan/suraScreen.dart';
 import 'package:islami/myTheme.dart';
 import 'package:islami/providers/AppProvider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'home/hadeth/hadethScreen.dart';
 
-void main() {
+void main() async {
+  // preferences
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
   runApp(ChangeNotifierProvider(
     child: MyApp(),
-    create: (context) => AppConfigProvider(),
+    create: (context) => AppConfigProvider(
+      dark: prefs.getBool('darkMode') ?? false,
+      english: prefs.getBool('english') ?? true,
+    ),
   ));
 }
 
