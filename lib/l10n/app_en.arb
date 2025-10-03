@@ -1,0 +1,22 @@
+{
+  "appTitle": "Islami",
+  "quraan": "Quraan",
+  "hadeth": "Hadeth",
+  "sebha": "Sebha",
+  "radio": "Radio",
+  "suraName": "Sura Name",
+  "ayatNumber": "Ayat Number",
+  "hadethName": "Ahadeth",
+  "settings": "Settings",
+  "language": "Language",
+  "en": "English",
+  "ar": "Arabic",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "tasbehNumber": "Number of Tasbeh",
+  "subhanAllah": "Subhan Allah",
+  "alhamdullah": "Alhamdullah",
+  "allahuakbar": "Allahu Akbar",
+  "radio_station": "Quraan Radio Station"
+}

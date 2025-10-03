@@ -1,0 +1,378 @@
+import 'package:flutter/material.dart';
+
+// import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/home/quraan/suraScreen.dart';
+import 'package:islami/myTheme.dart';
+import 'package:provider/provider.dart';
+
+import '../../l10n/app_localizations.dart';
+import '../../providers/AppProvider.dart';
+
+class QuraanTab extends StatelessWidget {
+  List<String> suraNames = [
+    "الفاتحه",
+    "البقرة",
+    "آل عمران",
+    "النساء",
+    "المائدة",
+    "الأنعام",
+    "الأعراف",
+    "الأنفال",
+    "التوبة",
+    "يونس",
+    "هود",
+    "يوسف",
+    "الرعد",
+    "إبراهيم",
+    "الحجر",
+    "النحل",
+    "الإسراء",
+    "الكهف",
+    "مريم",
+    "طه",
+    "الأنبياء",
+    "الحج",
+    "المؤمنون",
+    "النّور",
+    "الفرقان",
+    "الشعراء",
+    "النّمل",
+    "القصص",
+    "العنكبوت",
+    "الرّوم",
+    "لقمان",
+    "السجدة",
+    "الأحزاب",
+    "سبأ",
+    "فاطر",
+    "يس",
+    "الصافات",
+    "ص",
+    "الزمر",
+    "غافر",
+    "فصّلت",
+    "الشورى",
+    "الزخرف",
+    "الدّخان",
+    "الجاثية",
+    "الأحقاف",
+    "محمد",
+    "الفتح",
+    "الحجرات",
+    "ق",
+    "الذاريات",
+    "الطور",
+    "النجم",
+    "القمر",
+    "الرحمن",
+    "الواقعة",
+    "الحديد",
+    "المجادلة",
+    "الحشر",
+    "الممتحنة",
+    "الصف",
+    "الجمعة",
+    "المنافقون",
+    "التغابن",
+    "الطلاق",
+    "التحريم",
+    "الملك",
+    "القلم",
+    "الحاقة",
+    "المعارج",
+    "نوح",
+    "الجن",
+    "المزّمّل",
+    "المدّثر",
+    "القيامة",
+    "الإنسان",
+    "المرسلات",
+    "النبأ",
+    "النازعات",
+    "عبس",
+    "التكوير",
+    "الإنفطار",
+    "المطفّفين",
+    "الإنشقاق",
+    "البروج",
+    "الطارق",
+    "الأعلى",
+    "الغاشية",
+    "الفجر",
+    "البلد",
+    "الشمس",
+    "الليل",
+    "الضحى",
+    "الشرح",
+    "التين",
+    "العلق",
+    "القدر",
+    "البينة",
+    "الزلزلة",
+    "العاديات",
+    "القارعة",
+    "التكاثر",
+    "العصر",
+    "الهمزة",
+    "الفيل",
+    "قريش",
+    "الماعون",
+    "الكوثر",
+    "الكافرون",
+    "النصر",
+    "المسد",
+    "الإخلاص",
+    "الفلق",
+    "الناس"
+  ];
+
+  List<String> ayatNumber = [
+    "7",
+    "286",
+    "200",
+    "176",
+    "120",
+    "165",
+    "206",
+    "75",
+    "129",
+    "109",
+    "123",
+    "111",
+    "43",
+    "52",
+    "99",
+    "128",
+    "111",
+    "110",
+    "98",
+    "135",
+    "112",
+    "78",
+    "118",
+    "64",
+    "77",
+    "227",
+    "93",
+    "88",
+    "69",
+    "60",
+    "34",
+    "30",
+    "73",
+    "54",
+    "45",
+    "83",
+    "182",
+    "88",
+    "75",
+    "85",
+    "54",
+    "53",
+    "89",
+    "59",
+    "37",
+    "35",
+    "38",
+    "29",
+    "18",
+    "45",
+    "60",
+    "49",
+    "62",
+    "55",
+    "78",
+    "96",
+    "29",
+    "22",
+    "24",
+    "13",
+    "14",
+    "11",
+    "11",
+    "18",
+    "12",
+    "12",
+    "30",
+    "52",
+    "52",
+    "44",
+    "28",
+    "28",
+    "20",
+    "56",
+    "40",
+    "31",
+    "50",
+    "40",
+    "46",
+    "42",
+    "29",
+    "19",
+    "36",
+    "25",
+    "22",
+    "17",
+    "19",
+    "26",
+    "30",
+    "20",
+    "15",
+    "21",
+    "11",
+    "8",
+    "8",
+    "19",
+    "5",
+    "8",
+    "8",
+    "11",
+    "11",
+    "8",
+    "3",
+    "9",
+    "5",
+    "4",
+    "7",
+    "3",
+    "6",
+    "3",
+    "5",
+    "4",
+    "5",
+    "6"
+  ];
+
+  QuraanTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
+
+    return Column(
+      children: [
+        Center(child: Image.asset('assets/images/qur2an_screen_logo.png')),
+
+        /// titles (fixed)
+        Table(
+          children: [
+            TableRow(
+                children: [
+                  // ayat number container
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.symmetric(
+                          vertical: BorderSide(
+                              color: provider.isDark()
+                                  ? MyTheme.yellowColor
+                                  : Theme.of(context).primaryColor,
+                              width: 1.5)),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)!.ayatNumber,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+
+                  // sura name container
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      border: Border.symmetric(
+                          vertical: BorderSide(
+                              color: provider.isDark()
+                                  ? MyTheme.yellowColor
+                                  : Theme.of(context).primaryColor,
+                              width: 1.5)),
+                    ),
+                    child: Text(
+                      AppLocalizations.of(context)!.suraName,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                  ),
+                ],
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                        color: provider.isDark()
+                            ? MyTheme.yellowColor
+                            : Theme.of(context).primaryColor,
+                        width: 3),
+                    bottom: BorderSide(
+                        color: provider.isDark()
+                            ? MyTheme.yellowColor
+                            : Theme.of(context).primaryColor,
+                        width: 3),
+                  ),
+                )),
+          ],
+        ),
+
+        /// content (scrollable)
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Table(
+              border: TableBorder(
+                verticalInside: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 3),
+                right: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 1.5),
+                left: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 1.5),
+                bottom: BorderSide(
+                    color: provider.isDark()
+                        ? MyTheme.yellowColor
+                        : Theme.of(context).primaryColor,
+                    width: 1.5),
+              ),
+              children: [
+                for (int i = 0; i < suraNames.length; i++)
+                  TableRow(children: [
+                    /// ayat number
+                    Container(
+                      padding: const EdgeInsets.all(5),
+                      child: Text(
+                        ayatNumber[i],
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                    ),
+
+                    /// name (can be pressed)
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(SuraScreen.routeName,
+                            arguments:
+                                SuraScreenArgs(name: suraNames[i], index: i));
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        child: Text(
+                          suraNames[i],
+                          textAlign: TextAlign.center,
+                          style: Theme.of(context).textTheme.titleSmall,
+                        ),
+                      ),
+                    ),
+                  ])
+              ],
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
