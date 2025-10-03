@@ -68,5 +68,5 @@
 
 ## Acknowledgment
 
-This project was developed while I was at Root Academy.
+This project was developed during my Flutter Diploma at Route Academy.
 
