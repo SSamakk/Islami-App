@@ -23,12 +23,12 @@ Tasbeeh, Islamic radio and customizable settings.
 * Digital Tasbeeh counter for daily adhkar.
 * Simple and intuitive design for easy use.
 
-### 📻 Radio
+### Radio
 
 * Listen to live Islamic radio streaming.
 * Provides continuous Quran recitation.
 
-### ⚙️ Settings
+### Settings
 
 * **Language Support:** Switch between Arabic and English.
 * **Theme Mode:** Choose between light mode and dark mode for a comfortable viewing experience.
