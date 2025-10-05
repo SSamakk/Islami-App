@@ -1,8 +1,6 @@
 # Islami App
 
-**Islami** is a mobile application designed to provide essential Islamic resources and tools in one
-place. It features a clean and simple interface, allowing users to access the Quran, Hadith,
-Tasbeeh, Islamic radio and customizable settings.
+**Islami** is a mobile application designed to provide essential Islamic resources and tools in one place. It features a clean and simple interface, allowing users to access the Quran, Hadith, Tasbeeh, Islamic radio and customizable settings.
 
 ---
 
@@ -13,27 +11,31 @@ Tasbeeh, Islamic radio and customizable settings.
 * Browse and read all Surahs of the Holy Quran.
 * Organized by Surah for quick access.
 
-### 🕌 Hadith
+### Hadith
 
 * Access a collection of Hadiths.
 * Easy navigation for spiritual learning.
 
-### 📿 Tasbeeh
+### Tasbeeh
 
 * Digital Tasbeeh counter for daily adhkar.
 * Simple and intuitive design for easy use.
 
-### 📻 Radio
+### Radio
 
 * Listen to live Islamic radio streaming.
 * Provides continuous Quran recitation.
 
-### ⚙️ Settings
+### Settings
 
 * **Language Support:** Switch between Arabic and English.
 * **Theme Mode:** Choose between light mode and dark mode for a comfortable viewing experience.
 
 ---
+
+## Demo Link
+
+https://drive.google.com/drive/folders/1SMNwp_D6CqhxJ3V426An-Jw7SEDs7LfX?usp=sharing
 
 ## Installation
 
@@ -60,12 +62,6 @@ Tasbeeh, Islamic radio and customizable settings.
 
 ---
 
-## Demo Link
-
-https://drive.google.com/drive/folders/1SMNwp_D6CqhxJ3V426An-Jw7SEDs7LfX?usp=sharing
-
----
-
 ## Tech Stack
 
 * **Framework:** Flutter
@@ -76,6 +72,6 @@ https://drive.google.com/drive/folders/1SMNwp_D6CqhxJ3V426An-Jw7SEDs7LfX?usp=sha
 
 ## Acknowledgment
 
-This project was developed while I was taking a diploma at **Route Academy**.
+This project was developed during my Flutter Diploma at Route Academy.
 
 ---
