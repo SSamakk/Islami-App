@@ -37,7 +37,7 @@ Tasbeeh, Islamic radio and customizable settings.
 
 ## Demo Link
 
-https://drive.google.com/drive/folders/1SMNwp_D6CqhxJ3V426An-Jw7SEDs7LfX?usp=sharing
+[▶ View Demo on Google Drive](https://drive.google.com/drive/folders/1SMNwp_D6CqhxJ3V426An-Jw7SEDs7LfX?usp=sharing)
 
 ---
 
