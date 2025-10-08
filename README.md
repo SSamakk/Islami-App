@@ -41,6 +41,14 @@ Tasbeeh, Islamic radio and customizable settings.
 
 ---
 
+## Tech Stack
+
+* **Framework:** Flutter
+* **Language:** Dart
+* **Architecture:** Tab-based navigation
+
+---
+
 ## Installation
 
 1. Clone the repository:
@@ -66,15 +74,9 @@ Tasbeeh, Islamic radio and customizable settings.
 
 ---
 
-## Tech Stack
-
-* **Framework:** Flutter
-* **Language:** Dart
-* **Architecture:** Tab-based navigation
-
----
-
 ## Acknowledgment
 
 This project was developed during my Flutter Diploma at Route Academy.
+
+---
 
